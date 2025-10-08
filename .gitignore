@@ -1,0 +1,11 @@
+*
+
+!ConsoleApp*/
+!Program.cs
+
+!WebApplication*/
+!*/
+!**/*/
+!**/**/Default.aspx
+!**/**/Default.aspx.cs
+!.gitignore
