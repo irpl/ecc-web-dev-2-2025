@@ -12,6 +12,7 @@
             <asp:Label Text="Name: " runat="server" /><br />
             <asp:TextBox ID="txtName" runat="server" />
             <asp:CustomValidator 
+                Display="None"
                 ID="cvName"
                 runat="server"
                 ControlToValidate="txtName"
