@@ -20,7 +20,7 @@ namespace QueryStringTest
             string fname = txtFName.Text;
             string lname = txtLName.Text;
 
-            Response.Redirect("Greet.aspx?fname=" + fname + "&lname=" + lname);
+            Response.Redirect("Greet.aspx?firstname=" + fname + "&lastname=" + lname);
 
         }
     }
