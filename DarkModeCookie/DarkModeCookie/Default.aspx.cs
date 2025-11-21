@@ -11,16 +11,38 @@ namespace DarkModeCookie
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Request.Cookies["mode"] != null)
+                {
+                    string mode = Request.Cookies["mode"].Value;
 
+                    if (mode == "True")
+                    {
+                        container.Style.Add("background-color", "#333");
+                        container.Style.Add("color", "white");
+                        modeToggle.Checked = true;
+                    }
+                }
+            }
+            
         }
 
         protected void ToggleDarkMode(object sender, EventArgs e) {
             HttpCookie cookie = new HttpCookie("mode", modeToggle.Checked.ToString());
             cookie.Expires = DateTime.Now.AddDays(7);
-            Response.Cookies.Add(cookie); 
+            Response.Cookies.Add(cookie);
 
-            container.Style.Add("background-color", "#333");
-            container.Style.Add("color", "white");
+            if (modeToggle.Checked == true)
+            {
+                container.Style.Add("background-color", "#333");
+                container.Style.Add("color", "white");
+
+            }
+            else {
+                container.Style.Add("background-color", "#fff");
+                container.Style.Add("color", "black");
+            }
 
         }
     }
