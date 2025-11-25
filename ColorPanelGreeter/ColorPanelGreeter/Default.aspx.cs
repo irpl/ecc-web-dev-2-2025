@@ -11,6 +11,17 @@ namespace ColorPanelGreeter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                var colorParameter = Request.QueryString["color"];
+                var countParameter = Request.QueryString["count"];
+
+                if (!String.IsNullOrEmpty(colorParameter))
+                    ddlColor.SelectedValue = colorParameter;
+
+                if (!String.IsNullOrEmpty(countParameter))
+                    numCount.Text = countParameter;
+            }
             
         }
 
@@ -21,7 +32,11 @@ namespace ColorPanelGreeter
 
             var number = Server.UrlEncode(numCount.Text);
 
-            Response.Redirect($"Show.aspx?name={name}&color={color}&count={number}");
+            var emoji = Server.UrlEncode(ddlEmoji.SelectedValue);
+
+            var size = Server.UrlEncode(ddlSize.SelectedValue);
+
+            Response.Redirect($"Show.aspx?name={name}&color={color}&count={number}&emoji={emoji}&size={size}");
         }
     }
 }
